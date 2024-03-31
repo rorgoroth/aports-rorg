@@ -1,0 +1,32 @@
+# Contributor: Richard Mortier <mort@cantab.net>
+# Maintainer: Richard Mortier <mort@cantab.net>
+pkgname=jhead
+pkgver=3.08
+pkgrel=2
+pkgdesc="Exif Jpeg header manipulation tool"
+url="https://github.com/Matthias-Wandel/$pkgname"
+arch="all"
+license="custom"
+subpackages="$pkgname-doc"
+source="$pkgname-$pkgver.tar.gz::https://github.com/Matthias-Wandel/$pkgname/archive/refs/tags/$pkgver.tar.gz"
+options="!check" # no test suite
+
+build() {
+	make all
+}
+
+package() {
+	install -Dm755 jhead "$pkgdir"/usr/bin/jhead
+}
+
+doc() {
+	cd "$builddir"
+	gzip -v9 jhead.1
+	install -Dm644 jhead.1.gz "$subpkgdir"/usr/share/man/man1/jhead.1.gz
+	install -Dm644 readme.txt \
+		"$subpkgdir"/usr/share/licenses/$pkgname/readme.txt
+}
+
+sha512sums="
+eb50e487eaacf2b489ce5e76f09730c8bb0c50a0e2d7c854ebe8bd204ead8f6256e052c49c72af179dc46dd5372c1eff32ff549b947637b242dc7bbe8c7b20d5  jhead-3.08.tar.gz
+"

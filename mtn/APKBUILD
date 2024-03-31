@@ -1,0 +1,28 @@
+# Contributor:
+# Maintainer:
+pkgname=mtn
+pkgver=3.5.0
+pkgrel=0
+pkgdesc="Movie Thumbnailer using FFmpeg"
+url="https://gitlab.com/movie_thumbnailer/$pkgname"
+arch="all"
+license="GPL2"
+depends="ffmpeg gd"
+source="https://gitlab.com/movie_thumbnailer/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz"
+subpackages="$pkgname-doc"
+options="!check"
+builddir="$srcdir/$pkgname-v$pkgver"
+
+build() {
+    cd "$builddir"/src
+    make
+}
+
+package() {
+	cd "$builddir"/src
+    make DESTDIR="$pkgdir" PREFIX="/usr" install
+}
+
+sha512sums="
+78ce374bcc759762c5b13dccde45f12efa887ca452e20ece30a022e1485c70f4a879ef29ed645b5be96659015a2ba79b7e39091fa76c622ba7574abb95bbc95e  mtn-v3.5.0.tar.gz
+"

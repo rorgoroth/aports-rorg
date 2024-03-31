@@ -1,0 +1,37 @@
+# Contributor: Camille Scholtz <onodera@openmailbox.org>
+# Maintainer: Camille Scholtz <onodera@openmailbox.org>
+pkgname=atool2
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Archive tool with support for zstd"
+options="!check" # No testsuite
+url="https://github.com/solsticedhiver/$pkgname"
+arch="noarch"
+license="GPL-3.0-or-later"
+depends="
+	    7zip-virtual
+	    lrzip
+	    unzip
+	    zip
+	    zstd
+        file
+        perl
+	    "
+subpackages="$pkgname-doc $pkgname-bash-completion"
+source="$pkgname-$pkgver.tar.gz::https://github.com/rorgoroth/$pkgname/archive/refs/tags/$pkgver.tar.gz"
+
+build() {
+    autoreconf -fi
+	./configure --prefix=/usr
+}
+
+package() {
+	make DESTDIR="$pkgdir" install
+
+	install -Dm644 "$builddir"/extra/bash-completion-atool_0.1-1 \
+			"$pkgdir"/usr/share/bash-completion/completions/atool
+}
+
+sha512sums="
+33068aa2292edbafc69bda84d8ddc68638817d399227bde1431b27791f56bcdcbaabbd4de34db5ccbf4bd2352c7e8dfb558736ef864b4a4f0506d6f160acfa2e  atool2-1.0.0.tar.gz
+"

@@ -2,7 +2,7 @@
 # Maintainer: Camille Scholtz <onodera@openmailbox.org>
 pkgname=atool2
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Archive tool with support for zstd"
 options="!check" # No testsuite
 url="https://github.com/solsticedhiver/$pkgname"

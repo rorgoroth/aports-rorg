@@ -2,7 +2,7 @@
 # Maintainer: Richard Mortier <mort@cantab.net>
 pkgname=jhead
 pkgver=3.08
-pkgrel=2
+pkgrel=3
 pkgdesc="Exif Jpeg header manipulation tool"
 url="https://github.com/Matthias-Wandel/$pkgname"
 arch="all"

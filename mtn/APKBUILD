@@ -2,7 +2,7 @@
 # Maintainer:
 pkgname=mtn
 pkgver=3.5.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Movie Thumbnailer using FFmpeg"
 url="https://gitlab.com/movie_thumbnailer/$pkgname"
 arch="all"
